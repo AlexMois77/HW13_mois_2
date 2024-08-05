@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2>All Quotes</h2>
+   
+<ul>
+    {% for quote in quotes %}
+        <li>
+            <strong>{{ quote.text }}</strong> - <em><a href="{% url 'author-detail' quote.author.id %}">{{ quote.author.name }}</a></em>
+            <br>
+            Tags:
+            {% for tag in quote.tags.all %}
+            <span class="badge badge-custom">
+                <a href="{% url 'tag_quotes' tag.id %}">{{ tag.name }}</a>
+            </span>
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ul>
+
+<nav>
+    <ul class="pagination">
+        {% if quotes.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ quotes.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% for num in quotes.paginator.page_range %}
+            <li class="page-item{% if quotes.number == num %} active{% endif %}">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+        {% endfor %}
+
+        {% if quotes.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ quotes.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}

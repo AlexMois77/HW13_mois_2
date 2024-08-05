@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ author.name }}{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2>{{ author.name }}</h2>
+<p>{{ author.bio }}</p>
+<h3>Quotes</h3>
+<ul>
+    {% for quote in quotes %}
+        <li>
+            <strong>{{ quote.text }}</strong>
+            <br>
+            Tags:
+            {% for tag in quote.tags.all %}
+                <span class="badge badge-info">{{ tag.name }}</span>
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}">Back to home</a>
+{% endblock %}

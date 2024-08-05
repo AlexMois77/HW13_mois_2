@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Quotes with {{ tag.name }}{% endblock %}
+{% block content %}
+<h2>Quotes with tag: <span class="tag-name">{{ tag.name }}</span></h2>
+<ul>
+    {% for quote in quotes %}
+        <li>
+            <strong>{{ quote.text }}</strong> - <em>{{ quote.author.name }}</em>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}">Back to home</a>
+{% endblock %}

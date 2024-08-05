@@ -1,0 +1,16 @@
+python manage.py makemigrations
+
+python manage.py migrate   
+
+python manage.py runserver
+
+
+from django.core.mail import send_mail
+
+send_mail(
+    'Subject here',
+    'Here is the message.',
+    'alexmois@meta.ua',  # От кого
+    ['mois77@gmail.com'],  # Кому
+    fail_silently=False,
+)

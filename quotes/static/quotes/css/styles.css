@@ -1,0 +1,30 @@
+h2 {
+    color: crimson;
+}
+
+h3 {
+    color: crimson;
+}
+
+.tag-name {
+    color: #0050a5; /* Change to your desired color */
+    background-color: #e0e0e0; /* Optional background color */
+    padding: 5px; /* Optional padding */
+    
+  
+border-radius: 10px; /* Optional rounded corners */
+}
+
+.badge-custom {
+    background-color: crimson; /* Change to your desired color */
+    color: white; /* Text color */
+}
+
+.badge-custom a {
+    color: white; /* Ensure link text is visible */
+    text-decoration: none; /* Optional: Remove underline */
+}
+
+.badge-custom a:hover {
+    text-decoration: underline; /* Optional: Underline on hover */
+}
